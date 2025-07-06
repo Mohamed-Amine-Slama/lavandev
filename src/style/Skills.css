@@ -1,0 +1,314 @@
+.tech-skills-section {
+  position: relative;
+  padding: 8rem 0;
+  perspective: 2000px;
+  overflow: visible;
+  /* Remove the background */
+  background: transparent;
+  isolation: isolate;
+}
+
+.tech-skills-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.tech-skills-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.3));
+  text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+}
+
+.tech-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.tech-skill-card {
+  background: rgba(4, 7, 20, 0.15);
+  backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(0, 242, 254, 0.12);
+  border-radius: 24px;
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.1),
+    inset 0 0 40px rgba(0, 242, 254, 0.05);
+}
+
+.tech-skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 0%,
+    rgba(0, 242, 254, 0.05) 30%,
+    rgba(0, 242, 254, 0.08) 50%,
+    transparent 100%
+  );
+  transform: translateY(100%) rotate(45deg);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tech-skill-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.tech-skill-card:hover {
+  transform: translateY(-12px) rotateX(10deg) rotateY(-8deg);
+  border-color: rgba(0, 242, 254, 0.2);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 0 50px rgba(0, 242, 254, 0.1),
+    inset 0 0 60px rgba(0, 242, 254, 0.08);
+}
+
+.tech-skill-card:hover::before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.tech-skill-card:hover::after {
+  opacity: 0.15;
+}
+
+.tech-skill-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(20px);
+}
+
+.tech-skill-icon {
+  color: var(--primary);
+  margin-right: 1rem;
+  filter: drop-shadow(0 0 8px var(--primary));
+  font-size: 1.8rem;
+  position: relative;
+  opacity: 0.9;
+}
+
+/* @keyframes float {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-5px) translateZ(0); }
+} */
+
+.tech-skill-icon::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 0.5px solid var(--primary);
+  opacity: 0.4;
+  border-radius: 6px;
+}
+
+.tech-skill-category {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tech-skill-item {
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.tech-skill-card:hover .tech-skill-item {
+  transform: translateZ(10px);
+}
+
+.tech-skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tech-skill-name {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.tech-skill-level {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+}
+
+.tech-skill-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 242, 254, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tech-skill-progress {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 242, 254, 0.5),
+    rgba(0, 242, 254, 0.8),
+    rgba(0, 242, 254, 0.5)
+  );
+  background-size: 200% 100%;
+  animation: gradientShift 3s linear infinite;
+  box-shadow: 
+    0 0 20px rgba(0, 242, 254, 0.3),
+    0 0 40px rgba(0, 242, 254, 0.2);
+  border-radius: inherit;
+}
+
+.tech-skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary));
+  filter: blur(4px);
+  opacity: 0.5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes scrollCode {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 768px) {
+  .tech-skills-section {
+    padding: 4rem 0;
+    perspective: 1000px;
+  }
+
+  .tech-skills-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .tech-skill-card {
+    padding: 2rem;
+  }
+
+  .tech-skill-card:hover {
+    transform: translateY(-5px) rotateX(2deg) rotateY(-2deg);
+  }
+
+  .tech-skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tech-skills-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.code-pattern {
+  position: absolute;
+  font-family: monospace;
+  color: var(--primary);
+  opacity: 0.15;
+  font-size: 1rem;
+  white-space: nowrap;
+  animation: scrollCode 20s linear infinite;
+}
+
+.card-decoration {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: monospace;
+  color: var(--primary);
+  opacity: 0.1;
+  font-size: 0.8rem;
+}
+
+.corner-decoration {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--primary);
+  opacity: 0.2;
+}
+
+.corner-decoration.top-left {
+  top: 0.5rem;
+  left: 0.5rem;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.corner-decoration.top-right {
+  top: 0.5rem;
+  right: 0.5rem;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.corner-decoration.bottom-left {
+  bottom: 0.5rem;
+  left: 0.5rem;
+  border-right: 0;
+  border-top: 0;
+}
+
+.corner-decoration.bottom-right {
+  bottom: 0.5rem;
+  right: 0.5rem;
+  border-left: 0;
+  border-top: 0;
+}

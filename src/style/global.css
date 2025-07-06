@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary: #00f2fe;
+  --secondary: #4facfe;
+  --background: #040714;
+  --surface: rgba(13, 23, 33, 0.5);
+  --text: #e6f1ff;
+  --glow: 0 0 20px rgba(0, 242, 254, 0.2);
+  --neon-glow: 0 0 10px rgba(0, 242, 254, 0.3),
+               0 0 20px rgba(0, 242, 254, 0.2),
+               0 0 30px rgba(0, 242, 254, 0.1);
+  --glass: rgba(13, 23, 33, 0.7);
+  --card-bg: rgba(13, 23, 33, 0.4);
+  --border-color: rgba(0, 242, 254, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #040714 0%,
+    #0a1930 50%,
+    #040714 100%
+  );
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 242, 254, 0.05) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+section {
+  min-height: 100vh;
+  padding-top: 80px;
+  scroll-margin-top: 80px;
+}
+
+.section {
+  padding: 5rem 0;
+  scroll-snap-align: none;
+  min-height: 100vh;
+}
+
+.app {
+  position: relative;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+/* Remove general overflow from containers */
+.projects-section,
+.skills-section,
+.education-section {
+  overflow: visible;
+}
+
+.projects-container,
+.skills-container,
+.education-container {
+  overflow: visible;
+}
+
+/* Skills styles */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skill-card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 242, 254, 0.1);
+  box-shadow: var(--glow);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.skill-icon {
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+
+.skill-category {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.skill-item {
+  margin-bottom: 1rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+}
+
+.skill-level {
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.skill-bar {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* Diplomas styles */
+.diplomas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.diploma-card {
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 242, 254, 0.1);
+  box-shadow: var(--glow);
+}
+
+.diploma-card:hover {
+  transform: translateY(-5px);
+}
+
+.diploma-thumbnail {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.diploma-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diploma-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.diploma-card:hover .diploma-overlay {
+  opacity: 1;
+}
+
+.diploma-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.diploma-button:hover {
+  background: var(--primary);
+}
+
+.diploma-info {
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.diploma-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.diploma-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.diploma-details {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
