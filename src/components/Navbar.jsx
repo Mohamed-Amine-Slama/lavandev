@@ -3,10 +3,8 @@ import '../style/Navbar.css';
 
 const navItems = [
   { name: 'Home', href: '#home' },
-  { name: 'Education', href: '#education' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Diplomas', href: '#diplomas' }
 ];
 
 const Navbar = () => {
@@ -59,7 +57,7 @@ const Navbar = () => {
       
       <div className="nav-container">
         <div className="nav-wrapper">
-          <a href="#home" className="nav-logo">Mohamed</a>
+          <a href="#home" className="nav-logo">Lavandev</a>
           
           <button 
             className="menu-button"

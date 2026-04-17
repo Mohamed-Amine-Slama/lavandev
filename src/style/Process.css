@@ -1,0 +1,110 @@
+.process-section {
+  padding: 3rem 0;
+  background-color: transparent;
+  position: relative;
+  z-index: 10;
+  max-height: fit-content;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  color: var(--color-text-muted, #9ca3af);
+  font-size: 1.1rem;
+  margin-top: -2rem;
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  width: 2px;
+  background-image: linear-gradient(to bottom, var(--color-primary, #00d4c8) 50%, transparent 50%);
+  background-size: 2px 14px;
+  background-repeat: repeat-y;
+  z-index: 0;
+}
+
+.process-step {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step-marker {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--card-bg, rgba(13, 23, 33, 0.6));
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--color-primary, #00d4c8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-number {
+  color: var(--color-primary, #00d4c8);
+  font-weight: bold;
+  font-family: 'Space Mono', monospace;
+}
+
+.step-content {
+  padding-top: 0.5rem;
+}
+
+.step-title {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  color: var(--color-text-muted, #9ca3af);
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .process-timeline {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .process-timeline::before {
+    top: 24px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    background-image: linear-gradient(to right, var(--color-primary, #00d4c8) 50%, transparent 50%);
+    background-size: 14px 2px;
+    background-repeat: repeat-x;
+  }
+
+  .process-step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .step-content {
+    padding-top: 1rem;
+  }
+}

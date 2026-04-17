@@ -42,7 +42,8 @@
 
 .tech-skill-card {
   background: rgba(4, 7, 20, 0.15);
-  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 0.5px solid rgba(0, 242, 254, 0.12);
   border-radius: 24px;
   padding: 2.5rem;
@@ -58,7 +59,10 @@
 .tech-skill-card::before {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: linear-gradient(
     125deg,
     transparent 0%,
@@ -173,7 +177,8 @@
   height: 8px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(0, 242, 254, 0.08);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -250,7 +255,10 @@
 
 .tech-skills-decoration {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   pointer-events: none;
   opacity: 0.1;
   z-index: -1;

@@ -2,10 +2,10 @@ import React from 'react';
 import '../style/Footer.css';
 
 const socialLinks = [
-  { icon: 'github', url: 'https://github.com/yourusername', label: 'GitHub' },
-  { icon: 'linkedin', url: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-  { icon: 'twitter', url: 'https://twitter.com/yourusername', label: 'Twitter' },
-  { icon: 'envelope', url: 'mailto:your.email@example.com', label: 'Email' }
+  { icon: 'github', url: 'https://github.com/Lavandev', label: 'GitHub' },
+  { icon: 'linkedin', url: 'https://linkedin.com/company/lavandev', label: 'LinkedIn' },
+  { icon: 'twitter', url: 'https://twitter.com/lavandev', label: 'Twitter' },
+  { icon: 'envelope', url: 'mailto:contact@lavandev.com', label: 'Email' }
 ];
 
 const Footer = () => {
@@ -15,8 +15,8 @@ const Footer = () => {
         <div className="footer-grid">
           {/* About Section */}
           <div className="footer-section">
-            <h3 className="footer-title">Mohamed</h3>
-            <p className="footer-subtitle">Full Stack Developer</p>
+            <h3 className="footer-title">Lavandev</h3>
+            <p className="footer-subtitle">Development Company</p>
             <p className="footer-description">
               Building digital experiences with modern web technologies
             </p>
@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              {['Home', 'Projects', 'Skills', 'Education', 'Contact'].map((link) => (
+              {['Home', 'Projects', 'Skills', 'Contact'].map((link) => (
                 <li key={link}>
                   <a href={`#${link.toLowerCase()}`} className="footer-link">
                     {link}
@@ -40,9 +40,9 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Get in Touch</h4>
             <div className="contact-info">
-              <a href="mailto:your.email@example.com" className="contact-item">
+              <a href="mailto:contact@lavandev.com" className="contact-item">
                 <i className="fas fa-envelope"></i>
-                <span>your.email@example.com</span>
+                <span>contact@lavandev.com</span>
               </a>
               <a href="tel:+1234567890" className="contact-item">
                 <i className="fas fa-phone"></i>
@@ -53,7 +53,7 @@ const Footer = () => {
 
           {/* Social Links */}
           <div className="footer-section">
-            <h4 className="footer-heading">Follow Me</h4>
+            <h4 className="footer-heading">Follow Us</h4>
             <div className="social-links">
               {socialLinks.map((social) => (
                 <a
@@ -73,10 +73,10 @@ const Footer = () => {
         
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p>© {new Date().getFullYear()} Mohamed. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Lavandev. All rights reserved.</p>
           </div>
           <div className="footer-credit">
-            <p>Built with <span className="heart">❤</span> using React & Tailwind</p>
+            <p>Built with <span className="heart">❤</span> using React</p>
           </div>
         </div>
       </div>

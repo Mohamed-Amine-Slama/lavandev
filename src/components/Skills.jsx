@@ -5,47 +5,47 @@ import "../style/Skills.css"
 
 const skills = [
   {
-    category: "Frontend Development",
+    category: "Languages",
     icon: Code,
     items: [
-      { name: "React.js", level: 95 },
       { name: "JavaScript/ES6+", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "HTML5/CSS3", level: 95 },
-      { name: "Three.js/WebGL", level: 80 },
+      { name: "Python", level: 85 },
+      { name: "C/C++", level: 80 },
+      { name: "Java", level: 75 },
+      { name: "Assembly/VHDL", level: 70 },
     ],
   },
   {
-    category: "Backend Development",
+    category: "Frameworks & Libraries",
     icon: Server,
     items: [
-      { name: "Python", level: 90 },
-      { name: "Node.js", level: 85 },
-      { name: "RESTful APIs", level: 90 },
-      { name: "GraphQL", level: 80 },
-      { name: "WebSocket", level: 75 },
+      { name: "React / Redux", level: 90 },
+      { name: "Next.js", level: 85 },
+      { name: "Node.js", level: 80 },
+      { name: "Angular", level: 75 },
+      { name: "Bootstrap", level: 90 },
     ],
   },
   {
-    category: "Database & Cloud",
+    category: "Cybersecurity & Networks",
     icon: Database,
     items: [
-      { name: "PostgreSQL", level: 85 },
-      { name: "MongoDB", level: 80 },
-      { name: "Redis", level: 75 },
-      { name: "AWS", level: 80 },
-      { name: "Docker", level: 85 },
+      { name: "Kali Linux / Burp Suite", level: 85 },
+      { name: "Wireshark", level: 80 },
+      { name: "Network Security", level: 85 },
+      { name: "Penetration Testing", level: 80 },
+      { name: "Protocol Analysis", level: 85 },
     ],
   },
   {
-    category: "Development Tools",
+    category: "Tools & Environments",
     icon: Tool,
     items: [
       { name: "Git", level: 90 },
-      { name: "Webpack", level: 85 },
-      { name: "Jest/Testing", level: 85 },
-      { name: "CI/CD", level: 80 },
-      { name: "Agile/Scrum", level: 85 },
+      { name: "Docker", level: 85 },
+      { name: "Kubernetes", level: 75 },
+      { name: "VS Code", level: 95 },
+      { name: "Linux", level: 85 },
     ],
   },
 ]
@@ -63,38 +63,22 @@ const cardVariants = {
   }
 };
 
-const codePatterns = [
-  "<div>", "</div>", "const", "let", "function()", "=>", "return", 
-  "import", "export", "{}", "[]", "()", "useEffect", "useState"
-];
-
 const Skills = () => {
   return (
     <section className="tech-skills-section" id="skills">
       <div className="tech-skills-decoration">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="code-pattern"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          >
-            {codePatterns[Math.floor(Math.random() * codePatterns.length)]}
-          </div>
-        ))}
+        <div className="modern-blob blob-1"></div>
+        <div className="modern-blob blob-2"></div>
       </div>
       <div className="tech-skills-container">
-        <motion.h2
-          className="tech-skills-title"
+        <motion.div 
+          className="section-header-centered"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Technical Expertise
-        </motion.h2>
+          <h2 className="tech-skills-title">Core Competencies</h2>
+        </motion.div>
         <motion.div 
           className="tech-skills-grid"
           initial={{ opacity: 0 }}
@@ -111,13 +95,6 @@ const Skills = () => {
               custom={index}
               whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             >
-              <div className="corner-decoration top-left" />
-              <div className="corner-decoration top-right" />
-              <div className="corner-decoration bottom-left" />
-              <div className="corner-decoration bottom-right" />
-              <div className="card-decoration">
-                {`{${skillGroup.category.toLowerCase().replace(/\s+/g, '_')}}`}
-              </div>
               <div className="tech-skill-header">
                 <skillGroup.icon size={28} className="tech-skill-icon" />
                 <h3 className="tech-skill-category">{skillGroup.category}</h3>

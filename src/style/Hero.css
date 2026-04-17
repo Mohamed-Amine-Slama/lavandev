@@ -20,7 +20,8 @@
   padding: 3rem 2rem;
   position: relative;
   z-index: 1;
-  backdrop-filter: none;
+  -webkit-backdrop-filter: ;
+  backdrop-filter: ;
   background: none;
   border: none;
   box-shadow: none;
@@ -30,7 +31,7 @@
   transition: transform 0.3s ease;
   isolation: isolate;
   max-height: none;
-  max-width: 700px;
+  max-width: 1200px;
   width: 90%;
   position: relative;
   margin: 2rem auto;
@@ -40,7 +41,10 @@
 .hero-content::before {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: 
     linear-gradient(90deg, transparent 0%, rgba(0, 242, 254, 0.1) 50%, transparent 100%),
     repeating-linear-gradient(
@@ -142,7 +146,8 @@
   overflow: hidden;
   letter-spacing: 2px;
   font-size: 0.9rem;
-  backdrop-filter: none;
+  -webkit-backdrop-filter: ;
+  backdrop-filter: ;
   background: rgba(0, 242, 254, 0.05);
   border: 1px solid rgba(0, 242, 254, 0.2);
   text-transform: uppercase;
@@ -162,7 +167,10 @@
 .button::before {
   content: '';
   position: absolute;
-  inset: -2px;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
   background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.2), transparent);
   transform: translateX(-100%);
   transition: transform 0.5s ease;
@@ -378,15 +386,31 @@
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    white-space: normal;
+    border-right: none;
+    animation: glowText 3s infinite;
+    word-break: break-word;
   }
 
   .hero-title::after {
     display: none;
   }
 
+  .typing-container {
+    height: auto;
+    overflow: visible;
+  }
+
+  .typing-text {
+    white-space: normal;
+    word-break: break-word;
+    animation: gradientText 3s linear infinite;
+  }
+
   .hero-subtitle {
     font-size: 1.2rem;
+    height: auto;
   }
 
   .hero-description {
@@ -436,7 +460,7 @@
 
 @media (min-width: 1024px) {
   .hero-content {
-    max-width: 800px;
+    max-width: 1200px;
   }
 }
 
@@ -552,7 +576,8 @@
 
 .project-overlay {
   /* ...existing code... */
-  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: ;
+  backdrop-filter: ;
 }
 
 @keyframes scanline {
@@ -595,5 +620,4 @@
 .hero,
 .hero-content {
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
+  }

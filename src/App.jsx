@@ -1,37 +1,47 @@
-import React from "react"
+import React, { useState } from "react"
+import { AnimatePresence } from "framer-motion"
 import Background from "./components/Background"
 import Hero from "./components/Hero"
+import Stats from "./components/Stats"
+import Services from "./components/Services"
+import Process from "./components/Process"
+import About from "./components/About"
+import Contact from "./components/Contact"
 import Projects from "./components/Projects"
-import Education from "./components/Education"
-import Diplomas from "./components/Diplomas"
 import Skills from "./components/Skills"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+import Loader from "./components/Loader"
 import "./style/global.css"
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="relative min-h-screen bg-[#0a192f] overflow-x-hidden">
+    <div className="app-container">
+      <AnimatePresence>
+        {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
       <Background />
       <Navbar />
-      <main className="container mx-auto px-4">
+      <main className="main-content">
         <section id="home">
           <Hero />
         </section>
-        <section id="education" className="pt-20">
-          <Education />
-        </section>
-        <section id="projects" className="pt-20">
+        <Stats />
+        <Services />
+        <Process />
+        <About />
+        <section id="projects" className="section-padding">
           <Projects />
         </section>
-        <section id="skills" className="pt-20">
+        <section id="skills" className="section-padding">
           <Skills />
         </section>
-        <section id="diplomas" className="pt-20">
-          <Diplomas />
-        </section>
+        <Contact />
       </main>
-      <Footer />
+      {/* <Footer /> */} 
     </div>
   )
 }

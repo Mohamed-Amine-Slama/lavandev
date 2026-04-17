@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, FileCode, Terminal, Code2, Cpu } from "lucide-react"
+import { Github, Linkedin, Mail, Terminal, Code2, Cpu } from "lucide-react"
 import "../style/Hero.css"
 
 const Hero = () => {
@@ -120,7 +120,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="code-block">{"<Hero>"}</div>
-          <div className="code-block">{"const developer = {\n  name: 'Your Name',\n  role: 'Frontend'"}</div>
+          <div className="code-block">{"const agency = {\n  name: 'Lavandev',\n  role: 'Development Company'"}</div>
           <div className="code-block">{"function buildFuture() {\n  return 'Amazing Web Apps'\n}"}</div>
           <motion.div variants={containerVariants} initial="hidden" animate="visible">
             <motion.div variants={itemVariants} className="tech-icons">
@@ -130,21 +130,19 @@ const Hero = () => {
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="hero-title">
-              &lt;Frontend_Developer /&gt;
+              &lt;Lavandev_Agency /&gt;
             </motion.h1>
 
             <motion.div variants={itemVariants} className="hero-subtitle">
               <div className="typing-container">
                 <span className="typing-text">
-                  {/* Update this text or make it dynamic with useState if you want multiple phrases */}
-                  Building the web of tomorrow
+                  We engineer the web. Securely. Relentlessly.
                 </span>
               </div>
             </motion.div>
 
             <motion.p variants={itemVariants} className="hero-description">
-              I craft exceptional digital experiences with modern technologies. Specialized in React, Python, C++, and
-              system-level programming.
+              A dedicated development company passionate about web development, engineering, and cybersecurity. Specialized in modern frameworks and scalable systems.
             </motion.p>
 
             <motion.div variants={itemVariants} className="button-container">
@@ -154,7 +152,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get in Touch
+                GET IN TOUCH
               </motion.a>
               <motion.a
                 href="#projects"
@@ -162,16 +160,15 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Projects
+                VIEW PROJECTS
               </motion.a>
             </motion.div>
 
             <motion.div variants={itemVariants} className="social-links">
               {[
-                { icon: Github, href: "https://github.com/yourusername" },
-                { icon: Linkedin, href: "https://linkedin.com/in/yourusername" },
-                { icon: Mail, href: "mailto:your.email@example.com" },
-                { icon: FileCode, href: "/resume.pdf" },
+                { icon: Github, href: "https://github.com/Lavandev" },
+                { icon: Linkedin, href: "https://linkedin.com/company/lavandev" },
+                { icon: Mail, href: "mailto:contact@lavandev.com" },
               ].map((social, index) => (
                 <motion.a
                   key={index}

@@ -1,3 +1,4 @@
+html { scroll-padding-top: 80px; }
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
@@ -64,15 +65,17 @@ body::before {
 }
 
 section {
-  min-height: 100vh;
-  padding-top: 80px;
-  scroll-margin-top: 80px;
+  min-height: auto;
+  max-height: fit-content;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 3rem 0;
   scroll-snap-align: none;
-  min-height: 100vh;
+  min-height: auto;
+  max-height: fit-content;
 }
 
 .app {
@@ -106,7 +109,8 @@ section {
   border-radius: 10px;
   padding: 1.5rem;
   transition: transform 0.3s ease;
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: ;
+  backdrop-filter: ;
   border: 1px solid rgba(0, 242, 254, 0.1);
   box-shadow: var(--glow);
 }
@@ -175,7 +179,8 @@ section {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: ;
+  backdrop-filter: ;
   border: 1px solid rgba(0, 242, 254, 0.1);
   box-shadow: var(--glow);
 }
@@ -254,3 +259,28 @@ section {
   color: rgba(255, 255, 255, 0.7);
 }
 
+@media (max-width: 768px) {
+  section {
+    padding-top: 60px;
+    
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
