@@ -28,6 +28,11 @@
     "three-stdlib": "^2.28.5",
     "web-vitals": "^2.1.4"
   },
+  "overrides": {
+    "framer-motion-3d": {
+      "@react-three/fiber": "$@react-three/fiber"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
