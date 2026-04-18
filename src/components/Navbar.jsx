@@ -57,7 +57,10 @@ const Navbar = () => {
       
       <div className="nav-container">
         <div className="nav-wrapper">
-          <a href="#home" className="nav-logo">Lavandev</a>
+          <a href="#home" className="nav-logo" style={{ position: 'relative', zIndex: 9999, display: 'flex', alignItems: 'center', height: '60px', gap: '12px' }}>
+            <img src="/Logo.png" alt="Lavandev Logo" className="navbar-logo-image" style={{ height: '100%', width: 'auto', position: 'relative', zIndex: 9999, filter: 'drop-shadow(0 0 10px rgba(0,242,254,0.3))' }} />
+            Lavandev
+          </a>
           
           <button 
             className="menu-button"

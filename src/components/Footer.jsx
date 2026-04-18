@@ -42,11 +42,11 @@ const Footer = () => {
             <div className="contact-info">
               <a href="mailto:contact@lavandev.com" className="contact-item">
                 <i className="fas fa-envelope"></i>
-                <span>contact@lavandev.com</span>
+                <span>workdealsolutions@gmail.com</span>
               </a>
               <a href="tel:+1234567890" className="contact-item">
                 <i className="fas fa-phone"></i>
-                <span>+1 (234) 567-890</span>
+                <span>+216 94 059 560</span>
               </a>
             </div>
           </div>

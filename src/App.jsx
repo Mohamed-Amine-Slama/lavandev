@@ -6,7 +6,6 @@ import Stats from "./components/Stats"
 import Services from "./components/Services"
 import Process from "./components/Process"
 import About from "./components/About"
-import Contact from "./components/Contact"
 import Projects from "./components/Projects"
 import Skills from "./components/Skills"
 import Navbar from "./components/Navbar"
@@ -39,9 +38,8 @@ const App = () => {
         <section id="skills" className="section-padding">
           <Skills />
         </section>
-        <Contact />
       </main>
-      {/* <Footer /> */} 
+      <Footer />
     </div>
   )
 }
