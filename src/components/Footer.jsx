@@ -2,10 +2,13 @@ import React from 'react';
 import '../style/Footer.css';
 
 const socialLinks = [
+  { icon: 'instagram', url: 'https://www.instagram.com/lavandev/', label: 'Instagram' },
+  { icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61566731056390', label: 'Facebook' },
+  { icon: 'instagram', url: 'https://www.instagram.com/lavandev.agency/', label: 'Instagram' },
   { icon: 'github', url: 'https://github.com/Lavandev', label: 'GitHub' },
   { icon: 'linkedin', url: 'https://www.linkedin.com/in/lavan-dev-28b418405/', label: 'LinkedIn' },
   { icon: 'twitter', url: 'https://twitter.com/lavandev', label: 'Twitter' },
-  { icon: 'envelope', url: 'lavandevco@gmail.com', label: 'Email' }
+  { icon: 'envelope', url: 'mailto:lavandevco@gmail.com', label: 'Email' }
 ];
 
 const Footer = () => {
@@ -43,7 +46,7 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Get in Touch</h4>
             <div className="contact-info">
-              <a href="mailto:contact@lavandev.com" className="contact-item">
+              <a href="mailto:lavandevco@gmail.com" className="contact-item">
                 <i className="fas fa-envelope"></i>
                 <span>Lavandevco@gmail.com</span>
               </a>

@@ -69,6 +69,7 @@ const projects = [
       "/Bredl/Screenshot 2026-04-12 161807.png",
       "/Bredl/screenshot-1776006974894.png",
       "/Bredl/screenshot-1776006987155.png",
+      "/Bredl/Screenshot 2026-03-29 212348.png",
       "/Bredl/screenshot-1776007003014.png",
       "/Bredl/screenshot-1776007015723.png",
       "/Bredl/screenshot-1776007030965.png"
