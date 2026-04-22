@@ -3,6 +3,9 @@ import '../style/Navbar.css';
 
 const navItems = [
   { name: 'Home', href: '#home' },
+  { name: 'Services', href: '#services' },
+  { name: 'Process', href: '#process' },
+  { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
 ];

@@ -7,83 +7,112 @@ const Hero = () => {
   const heroRef = useRef(null);
   
   useEffect(() => {
-    // Add matrix rain effect
-    const createMatrixRain = () => {
-      const rain = document.createElement('div');
-      rain.className = 'matrix-column';
-      rain.style.left = `${Math.random() * 100}%`;
-      rain.style.animationDuration = `${Math.random() * 2 + 1}s`;
-      rain.innerText = '10'.repeat(30);
-      return rain;
-    };
+    const heroElement = heroRef.current;
+    if (!heroElement) return;
 
-    // Add floating code elements
-    const codeSnippets = [
-      '<div>', '</div>', 'const', 'function()', 
-      'return', 'import React', 'export default',
-      '{ }', '=> {}', 'useState', 'useEffect'
-    ];
+    // Determine if on mobile to lazy load / simplify animations
+    const isMobile = window.innerWidth <= 768;
 
-    const createCodeElement = () => {
-      const element = document.createElement('div');
-      element.className = 'code-element';
-      element.style.left = `${Math.random() * 100}%`;
-      element.style.top = `${Math.random() * 100}%`;
-      element.style.animationDelay = `${Math.random() * 2}s`;
-      element.innerText = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
-      return element;
-    };
+    // Variables for cleanup
+    let codeElements, matrixRain, circuitPattern, scanLine;
 
-    const codeElements = document.createElement('div');
-    codeElements.className = 'code-elements';
-    for (let i = 0; i < 20; i++) {
-      codeElements.appendChild(createCodeElement());
+    if (!isMobile) {
+      // Add matrix rain effect
+      const createMatrixRain = () => {
+        const rain = document.createElement('div');
+        rain.className = 'matrix-column';
+        rain.style.left = `${Math.random() * 100}%`;
+        rain.style.animationDuration = `${Math.random() * 2 + 1}s`;
+        rain.innerText = '10'.repeat(30);
+        return rain;
+      };
+
+      // Add floating code elements
+      const codeSnippets = [
+        '<div>', '</div>', 'const', 'function()', 
+        'return', 'import React', 'export default',
+        '{ }', '=> {}', 'useState', 'useEffect'
+      ];
+
+      const createCodeElement = () => {
+        const element = document.createElement('div');
+        element.className = 'code-element';
+        element.style.left = `${Math.random() * 100}%`;
+        element.style.top = `${Math.random() * 100}%`;
+        element.style.animationDelay = `${Math.random() * 2}s`;
+        element.innerText = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+        return element;
+      };
+
+      codeElements = document.createElement('div');
+      codeElements.className = 'code-elements';
+      // Reduce the number of elements dramatically for performance
+      for (let i = 0; i < 15; i++) {
+        codeElements.appendChild(createCodeElement());
+      }
+
+      matrixRain = document.createElement('div');
+      matrixRain.className = 'matrix-rain';
+      // Reduce raining columns for performance
+      for (let i = 0; i < 30; i++) {
+        matrixRain.appendChild(createMatrixRain());
+      }
+
+      heroElement.appendChild(codeElements);
+      heroElement.appendChild(matrixRain);
+
+      // Add circuit pattern
+      circuitPattern = document.createElement('div');
+      circuitPattern.className = 'circuit-pattern';
+      heroElement.appendChild(circuitPattern);
+
+      // Add scanning line
+      scanLine = document.createElement('div');
+      scanLine.className = 'scan-line';
+      heroElement.appendChild(scanLine);
     }
 
-    const matrixRain = document.createElement('div');
-    matrixRain.className = 'matrix-rain';
-    for (let i = 0; i < 50; i++) {
-      matrixRain.appendChild(createMatrixRain());
-    }
-
-    heroRef.current.appendChild(codeElements);
-    heroRef.current.appendChild(matrixRain);
-
-    // Add circuit pattern
-    const circuitPattern = document.createElement('div');
-    circuitPattern.className = 'circuit-pattern';
-    heroRef.current.appendChild(circuitPattern);
-
-    // Add scanning line
-    const scanLine = document.createElement('div');
-    scanLine.className = 'scan-line';
-    heroRef.current.appendChild(scanLine);
-
-    // Simplified mouse move effect
+    // Simplified mouse move effect ONLY on desktop
     const handleMouseMove = (e) => {
-      const { left, top, width, height } = heroRef.current.getBoundingClientRect();
+      if (isMobile) return;
+      const { left, top, width, height } = heroElement.getBoundingClientRect();
       const x = (e.clientX - left) / width - 0.5;
       const y = (e.clientY - top) / height - 0.5;
       
-      const content = heroRef.current.querySelector('.hero-content');
-      content.style.transform = 
-        `perspective(1000px) 
-         rotateY(${x * 5}deg) 
-         rotateX(${-y * 5}deg)
-         translateZ(20px)`;
+      const content = heroElement.querySelector('.hero-content');
+      if (content) {
+        content.style.transform = 
+          `perspective(1000px) 
+           rotateY(${x * 5}deg) 
+           rotateX(${-y * 5}deg)
+           translateZ(20px)`;
+      }
     };
 
     const handleMouseLeave = () => {
-      const content = heroRef.current.querySelector('.hero-content');
-      content.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) translateZ(0)';
+      if (isMobile) return;
+      const content = heroElement.querySelector('.hero-content');
+      if (content) {
+        content.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) translateZ(0)';
+      }
     };
 
-    heroRef.current.addEventListener('mousemove', handleMouseMove);
-    heroRef.current.addEventListener('mouseleave', handleMouseLeave);
+    if (!isMobile) {
+      heroElement.addEventListener('mousemove', handleMouseMove);
+      heroElement.addEventListener('mouseleave', handleMouseLeave);
+    }
 
     return () => {
-      heroRef.current?.removeEventListener('mousemove', handleMouseMove);
-      heroRef.current?.removeEventListener('mouseleave', handleMouseLeave);
+      if (!isMobile) {
+        heroElement.removeEventListener('mousemove', handleMouseMove);
+        heroElement.removeEventListener('mouseleave', handleMouseLeave);
+      }
+      
+      // Cleanup dynamically added DOM elements
+      if (codeElements && heroElement.contains(codeElements)) heroElement.removeChild(codeElements);
+      if (matrixRain && heroElement.contains(matrixRain)) heroElement.removeChild(matrixRain);
+      if (circuitPattern && heroElement.contains(circuitPattern)) heroElement.removeChild(circuitPattern);
+      if (scanLine && heroElement.contains(scanLine)) heroElement.removeChild(scanLine);
     };
   }, []);
 

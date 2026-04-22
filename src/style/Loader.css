@@ -1,55 +1,177 @@
-﻿.loader-container {
+.loader-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--background, #040714);
+  background-color: #0d1721;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overflow: hidden;
+}
+
+.loader-anim-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.loader-logo-wrapper {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulseLogo 2s infinite ease-in-out;
+}
+
+.loader-logo-img {
+  width: 70px;
+  height: auto;
+  filter: none;
+}
+
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); filter: none; }
+  50% { transform: scale(1.05); filter: none; }
+}
+
+.loader-rings {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.ring-outer {
+  width: 180px;
+  height: 180px;
+  border-top: 2px solid rgba(0, 242, 254, 0.8);
+  border-bottom: 2px solid rgba(0, 242, 254, 0.8);
+  animation: spinOuter 3s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+.ring-middle {
+  width: 140px;
+  height: 140px;
+  border-left: 2px solid rgba(79, 172, 254, 0.8);
+  border-right: 2px solid rgba(79, 172, 254, 0.8);
+  animation: spinMiddle 2s linear infinite reverse;
+}
+
+.ring-inner {
+  width: 110px;
+  height: 110px;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  animation: spinInner 1.5s ease-in-out infinite;
+}
+
+@keyframes spinOuter {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spinMiddle {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spinInner {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) rotate(180deg); border-top-color: #00f2fe; border-bottom-color: #00f2fe; }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .loader-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-}
-
-.loader-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--primary, #00f2fe);
-  filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
+  gap: 1rem;
 }
 
 .loader-text {
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, var(--primary, #00f2fe), var(--secondary, #4facfe));
+  font-size: 2rem;
+  letter-spacing: 6px;
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.2));
-  font-weight: 700;
+  filter: none;
+  font-weight: 800;
   margin: 0;
+  text-transform: uppercase;
+}
+
+.loader-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  margin: 0;
+  animation: blinkText 1.5s infinite;
+}
+
+@keyframes blinkText {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; text-shadow: 0 0 8px rgba(0, 242, 254, 0.5); }
 }
 
 .loader-progress-bar-container {
   width: 250px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 4px;
   overflow: hidden;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .loader-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary, #00f2fe), var(--secondary, #4facfe));
-  box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
   border-radius: 4px;
+  position: relative;
+}
+
+.loader-progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: moveStripes 1s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 0; }
 }

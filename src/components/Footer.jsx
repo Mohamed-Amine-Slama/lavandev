@@ -15,7 +15,10 @@ const Footer = () => {
         <div className="footer-grid">
           {/* About Section */}
           <div className="footer-section">
-            <h3 className="footer-title">Lavandev</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.5rem' }}>
+              <img src="/Logo.png" alt="Lavandev Logo" style={{ height: '45px', width: 'auto', filter: 'drop-shadow(0 0 10px rgba(0,242,254,0.3))' }} />
+              <h3 className="footer-title" style={{ marginBottom: 0 }}>Lavandev</h3>
+            </div>
             <p className="footer-subtitle">Development Company</p>
             <p className="footer-description">
               Building digital experiences with modern web technologies
@@ -42,11 +45,11 @@ const Footer = () => {
             <div className="contact-info">
               <a href="mailto:contact@lavandev.com" className="contact-item">
                 <i className="fas fa-envelope"></i>
-                <span>workdealsolutions@gmail.com</span>
+                <span>Lavandevco@gmail.com</span>
               </a>
               <a href="tel:+1234567890" className="contact-item">
                 <i className="fas fa-phone"></i>
-                <span>+216 94 059 560</span>
+                <span>+216 99 040 187</span>
               </a>
             </div>
           </div>
