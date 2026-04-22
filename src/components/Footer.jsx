@@ -3,9 +3,9 @@ import '../style/Footer.css';
 
 const socialLinks = [
   { icon: 'github', url: 'https://github.com/Lavandev', label: 'GitHub' },
-  { icon: 'linkedin', url: 'https://linkedin.com/company/lavandev', label: 'LinkedIn' },
+  { icon: 'linkedin', url: 'https://www.linkedin.com/in/lavan-dev-28b418405/', label: 'LinkedIn' },
   { icon: 'twitter', url: 'https://twitter.com/lavandev', label: 'Twitter' },
-  { icon: 'envelope', url: 'mailto:contact@lavandev.com', label: 'Email' }
+  { icon: 'envelope', url: 'lavandevco@gmail.com', label: 'Email' }
 ];
 
 const Footer = () => {
