@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Github, ExternalLink, ArrowRight, Code, X, ChevronLeft, ChevronRight, Image as ImageIcon } from "lucide-react"
+import useMobile from "../hooks/useMobile"
 import "../style/Projects.css"
 
 const projects = [
@@ -99,6 +100,7 @@ const projects = [
 ]
 
 const Projects = () => {
+  const isMobile = useMobile();
   const [selectedProject, setSelectedProject] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -149,7 +151,7 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{
+              whileHover={isMobile ? {} : {
                 y: -8,
                 rotateX: 5,
                 rotateY: -5,

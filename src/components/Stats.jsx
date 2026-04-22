@@ -6,7 +6,7 @@ const Stats = () => {
   const stats = [
     { value: '15', label: 'Projects' },
     { value: '14', label: 'Satisfied clients' },
-    { value: '< 1 day', label: 'Max response time' },
+    { value: '< 24H', label: 'Max response time' },
   ];
 
   const containerVariants = {

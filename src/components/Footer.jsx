@@ -2,12 +2,10 @@ import React from 'react';
 import '../style/Footer.css';
 
 const socialLinks = [
-  { icon: 'instagram', url: 'https://www.instagram.com/lavandev/', label: 'Instagram' },
   { icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61566731056390', label: 'Facebook' },
   { icon: 'instagram', url: 'https://www.instagram.com/lavandev.agency/', label: 'Instagram' },
-  { icon: 'github', url: 'https://github.com/Lavandev', label: 'GitHub' },
+  { icon: 'github', url: 'https://github.com/Lavandev-Co', label: 'GitHub' },
   { icon: 'linkedin', url: 'https://www.linkedin.com/in/lavan-dev-28b418405/', label: 'LinkedIn' },
-  { icon: 'twitter', url: 'https://twitter.com/lavandev', label: 'Twitter' },
   { icon: 'envelope', url: 'mailto:lavandevco@gmail.com', label: 'Email' }
 ];
 
@@ -82,7 +80,7 @@ const Footer = () => {
             <p>© {new Date().getFullYear()} Lavandev. All rights reserved.</p>
           </div>
           <div className="footer-credit">
-            <p>Built with <span className="heart">❤</span> using React</p>
+            <p>Built with <span className="heart">❤</span> From Lavandev Team</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useMobile from '../hooks/useMobile';
 import '../style/Navbar.css';
 
 const navItems = [
@@ -11,6 +12,7 @@ const navItems = [
 ];
 
 const Navbar = () => {
+  const isMobile = useMobile(768);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -65,24 +67,47 @@ const Navbar = () => {
             Lavandev
           </a>
           
-          <button 
-            className="menu-button"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className={`hamburger ${isOpen ? 'active' : ''}`}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
+          {isMobile && (
+            <button 
+              className="menu-button"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className={`hamburger ${isOpen ? 'active' : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+          )}
 
-          <div className="nav-links">
+          {!isMobile && (
+            <div className="nav-links">
+              {navItems.map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`nav-link ${activeSection === item.href.slice(1) ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                >
+                  <span className="nav-number">{`0${index + 1}.`}</span>
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {isMobile && (
+          <div className={`mobile-menu ${isOpen ? 'show' : ''}`}>
             {navItems.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`nav-link ${activeSection === item.href.slice(1) ? 'active' : ''}`}
+                className={`mobile-nav-link ${activeSection === item.href.slice(1) ? 'active' : ''}`}
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(item.href);
@@ -93,24 +118,7 @@ const Navbar = () => {
               </a>
             ))}
           </div>
-        </div>
-
-        <div className={`mobile-menu ${isOpen ? 'show' : ''}`}>
-          {navItems.map((item, index) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={`mobile-nav-link ${activeSection === item.href.slice(1) ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(item.href);
-              }}
-            >
-              <span className="nav-number">{`0${index + 1}.`}</span>
-              {item.name}
-            </a>
-          ))}
-        </div>
+        )}
       </div>
     </nav>
   );

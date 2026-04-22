@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Sphere } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
+import useMobile from '../hooks/useMobile'
 
 // Atmosphere Shaders (keep the same as before)
 const atmosphereVertexShader = /* glsl */ `...`
@@ -50,7 +51,8 @@ const Planet = () => {
 }
 
 const StarField = () => {
-  const count = 5000
+  const isMobile = useMobile();
+  const count = isMobile ? 1000 : 5000;
   const mesh = useRef()
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3)
@@ -60,10 +62,10 @@ const StarField = () => {
       arr[i + 2] = (Math.random() - 0.5) * 100
     }
     return arr
-  }, [])
+  }, [count])
 
   const velocities = useMemo(() => 
-    new Float32Array(count).map(() => 0.01 + Math.random() * 0.02), []
+    new Float32Array(count).map(() => 0.01 + Math.random() * 0.02), [count]
   )
 
   useFrame(() => {
@@ -77,7 +79,7 @@ const StarField = () => {
   })
 
   return (
-    <points ref={mesh} position={[0, 0, -50]}>
+    <points key={count} ref={mesh} position={[0, 0, -50]}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
@@ -98,8 +100,9 @@ const StarField = () => {
 }
 
 const BackgroundParticles = () => {
+  const isMobile = useMobile();
   const particles = useMemo(() => {
-    const count = 400
+    const count = isMobile ? 50 : 400;
     return Array.from({ length: count }).map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -108,7 +111,7 @@ const BackgroundParticles = () => {
       speedY: (Math.random() - 0.5) * 0.1,
       opacity: Math.random() * 0.5 + 0.3
     }))
-  }, [])
+  }, [isMobile])
 
   return (
     <div className="background-particles">
@@ -139,6 +142,8 @@ const Background = () => {
       left: 0, 
       width: '100%', 
       height: '100%', 
+      zIndex: -1,
+      pointerEvents: 'none',
       background: 'linear-gradient(to bottom, #000000, #1a1a2e)'
     }}>
       <BackgroundParticles />

@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Terminal, Code2, Cpu } from "lucide-react"
+import useMobile from "../hooks/useMobile"
 import "../style/Hero.css"
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const isMobile = useMobile(768);
   
   useEffect(() => {
     const heroElement = heroRef.current;
     if (!heroElement) return;
-
-    // Determine if on mobile to lazy load / simplify animations
-    const isMobile = window.innerWidth <= 768;
 
     // Variables for cleanup
     let codeElements, matrixRain, circuitPattern, scanLine;
@@ -114,7 +113,7 @@ const Hero = () => {
       if (circuitPattern && heroElement.contains(circuitPattern)) heroElement.removeChild(circuitPattern);
       if (scanLine && heroElement.contains(scanLine)) heroElement.removeChild(scanLine);
     };
-  }, []);
+  }, [isMobile]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
